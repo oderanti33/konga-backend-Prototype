@@ -15,6 +15,7 @@ const usersRoutes = require('./Route/users-routes');
 const server = express();
 
 server.use(cors());
+server.options('*', cors());
 
 server.use('/api/products', productsRoutes);
 server.use('/api/users', usersRoutes);
