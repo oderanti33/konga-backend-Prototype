@@ -16,6 +16,11 @@ const server = express();
 
 server.use(cors());
 
+server.use((_req, res, next) => {
+    res.header('Access-Control-Allow-Headers', '*');
+    next();
+});
+
 server.use('/api/products', productsRoutes);
 server.use('/api/users', usersRoutes);
 
