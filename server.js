@@ -14,7 +14,7 @@ const usersRoutes = require('./Route/users-routes');
 
 const server = express();
 
-app.use((req, res, next) => {
+server.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader(
     'Access-Control-Allow-Headers',
