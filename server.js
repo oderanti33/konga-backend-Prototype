@@ -14,8 +14,16 @@ const usersRoutes = require('./Route/users-routes');
 
 const server = express();
 
-server.use(cors());
-server.options('*', cors());
+server.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+
+  next();
+});
 
 server.use('/api/products', productsRoutes);
 server.use('/api/users', usersRoutes);
