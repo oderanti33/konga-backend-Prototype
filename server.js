@@ -15,12 +15,6 @@ const usersRoutes = require('./Route/users-routes');
 const server = express();
 
 server.use(bodyParser.json());
-const corsOptions ={
-    origin:'http://localhost:3000', 
-    credentials:true,
-    optionSuccessStatus:200
-};
-server.use(cors(corsOptions));
 
 server.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'localhost:3000');
