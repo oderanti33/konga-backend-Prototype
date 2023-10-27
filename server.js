@@ -14,6 +14,8 @@ const usersRoutes = require('./Route/users-routes');
 
 const server = express();
 
+server.use(bodyParser.json());
+
 server.use('/api/products', productsRoutes);
 server.use('/api/users', usersRoutes);
 
