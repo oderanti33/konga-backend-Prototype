@@ -16,6 +16,8 @@ const server = express();
 
 server.use(bodyParser.json());
 
+app.use(express.json());
+
 server.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
