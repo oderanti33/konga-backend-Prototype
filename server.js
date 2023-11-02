@@ -16,6 +16,10 @@ const server = express();
 
 server.use(bodyParser.json());
 
+server.use(cors({
+    origin: 'http://localhost:3001',
+}));
+
 server.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
     res.setHeader(
