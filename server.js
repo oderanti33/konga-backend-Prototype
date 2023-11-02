@@ -17,7 +17,7 @@ const server = express();
 server.use(bodyParser.json());
 
 server.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3001',
 }));
 
 
