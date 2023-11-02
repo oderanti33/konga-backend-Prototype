@@ -15,6 +15,11 @@ const usersRoutes = require('./Route/users-routes');
 const server = express();
 
 server.use(bodyParser.json());
+server.use(cors({
+    origin: 'http://localhost:3000',
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization'
+}));
 
 server.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000/');
