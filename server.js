@@ -16,12 +16,6 @@ const server = express();
 
 server.use(bodyParser.json());
 
-server.use(express.json());
-
-server.use(express.urlencoded({ extended: true }));
-
-server.use(cors());
-
 server.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
     res.setHeader(
