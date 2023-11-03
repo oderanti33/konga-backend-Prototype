@@ -4,22 +4,18 @@ const HttpError = require('./Model/http-error');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
-
-
-const url = `mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.cwqmkab.mongodb.net/${process.env.COLLECTION_NAME}?retryWrites=true&w=majority`;
-
-const productsRoutes = require('./Route/products-routes');
-const usersRoutes = require('./Route/users-routes');
-
-
 const server = express();
-
 server.use(bodyParser.json());
 server.use(cors({
     origin: 'http://localhost:3000',
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization'
 }));
+
+const url = `mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.cwqmkab.mongodb.net/${process.env.COLLECTION_NAME}?retryWrites=true&w=majority`;
+
+const productsRoutes = require('./Route/products-routes');
+const usersRoutes = require('./Route/users-routes');
 
 server.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000/');
