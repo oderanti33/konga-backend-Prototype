@@ -26,8 +26,6 @@ server.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     if (req.method === 'OPTIONS') {
         res.sendStatus(200); 
-    } else {
-        next();
     }
     next();
 });
