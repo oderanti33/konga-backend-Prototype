@@ -8,7 +8,7 @@ const server = express();
 server.use(bodyParser.json());
 server.use(cors({
     origin: 'http://localhost:3000',
-    methods: 'GET,POST,PUT,DELETE',
+    methods: 'GET,POST,PUT,DELETE, OPTION',
     allowedHeaders: 'Content-Type,Authorization'
 }));
 
@@ -23,7 +23,7 @@ server.use((req, res, next) => {
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTION');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
 });
