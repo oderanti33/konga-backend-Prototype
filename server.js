@@ -25,9 +25,6 @@ server.use((req, res, next) => {
     );
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
-    if (req.method === 'OPTIONS') {
-        res.sendStatus(200); 
-    }
     next();
 });
 
