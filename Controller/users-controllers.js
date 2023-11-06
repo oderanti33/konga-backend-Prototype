@@ -18,8 +18,7 @@ const getallUsers = async (req, res, next) => {
         const error = new HttpError('cannot find any user', 505);
         return next(error);
     }
-
-    res.json({ message: user.map(u => u.toObject({ getters: true })) })
+    res.json(user.map(u => u.toObject({ getters: true })))
 };
 
 const signUp = async (req, res, next) => {
