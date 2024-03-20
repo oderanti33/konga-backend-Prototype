@@ -17,16 +17,29 @@ const url = `mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.cwqm
 const productsRoutes = require('./Route/products-routes');
 const usersRoutes = require('./Route/users-routes');
 
-server.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-    );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+// server.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader(
+//         'Access-Control-Allow-Headers',
+//         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+//     );
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
 
-    next();
-});
+//     next();
+// });
+
+const allowedOrigins = ['http://localhost:3000/', 'http://example2.com'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+server.use(cors(corsOptions));
 
 server.use('/api/products', productsRoutes);
 server.use('/api/users', usersRoutes);
