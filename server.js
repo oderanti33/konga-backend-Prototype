@@ -6,11 +6,11 @@ const cors = require('cors');
 require('dotenv').config();
 const server = express();
 server.use(bodyParser.json());
-server.use(cors({
-    origin: 'http://localhost:3000',
-    methods: 'GET,POST,PUT,DELETE, OPTION',
-    allowedHeaders: 'Content-Type,Authorization'
-}));
+// server.use(cors({
+//     origin: 'http://localhost:3000',
+//     methods: 'GET,POST,PUT,DELETE, OPTION',
+//     allowedHeaders: 'Content-Type,Authorization'
+// }));
 
 const url = `mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.cwqmkab.mongodb.net/${process.env.COLLECTION_NAME}?retryWrites=true&w=majority`;
 
@@ -23,8 +23,8 @@ server.use((req, res, next) => {
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTION');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+
     next();
 });
 
@@ -33,7 +33,7 @@ server.use('/api/users', usersRoutes);
 
 
 server.use((req, res, next) => {
-    const error = new HttpError('Could not find this route', 404)
+    const error = new HttpError('Could not find this routesssss', 404)
     throw (error);
 });
 
