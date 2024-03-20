@@ -28,7 +28,7 @@ const usersRoutes = require('./Route/users-routes');
 //     next();
 // });
 
-const allowedOrigins = ['http://localhost:3000/', 'http://example2.com'];
+const allowedOrigins = ['*'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.includes(origin)) {
