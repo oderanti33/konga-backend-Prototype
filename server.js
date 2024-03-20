@@ -28,18 +28,18 @@ const usersRoutes = require('./Route/users-routes');
 //     next();
 // });
 
-const allowedOrigins = ['https://konga-backend2222.onrender.com/', 'https://konga-backend4444.onrender.com/];
-server.use(cors({
+const allowedOrigins = ['http://example1.com', 'http://example2.com'];
+const corsOptions = {
   origin: function (origin, callback) {
-    // Check if the origin is in the allowed list or if it's undefined (non-browser clients)
-    if (!origin || allowedOrigins.includes(origin)) {
-      
+    if (allowedOrigins.includes(origin)) {
       callback(new Error('Not allowed by CORS'));
     } else {
       callback(null, true);
     }
   }
-}));
+};
+
+server.use(cors(corsOptions));
 
 server.use('/api/products', productsRoutes);
 server.use('/api/users', usersRoutes);
