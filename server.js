@@ -28,18 +28,22 @@ const usersRoutes = require('./Route/users-routes');
 //     next();
 // });
 
-const allowedOrigins = ['*'];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-};
+// const allowedOrigins = ['*'];
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   }
+// };
 
-server.use(cors(corsOptions));
+// server.use(cors(corsOptions));
+
+app.use(cors({
+  origin: '*'
+}));
 
 server.use('/api/products', productsRoutes);
 server.use('/api/users', usersRoutes);
