@@ -33,7 +33,7 @@ server.use('/api/users', usersRoutes);
 
 
 server.use((req, res, next) => {
-    const error = new HttpError('Could not find this routesssss', 404)
+    const error = new HttpError('Could not find this routessssssss', 404)
     throw (error);
 });
 
