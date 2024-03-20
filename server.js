@@ -31,12 +31,6 @@ server.use((req, res, next) => {
 server.use('/api/products', productsRoutes);
 server.use('/api/users', usersRoutes);
 
-
-// server.use((req, res, next) => {
-//     const error = new HttpError('Could not find this routessssssss', 404)
-//     throw (error);
-// });
-
 server.use((error, req, res, next) => {
     if (res.headerSent) {
         return next(error)
@@ -51,6 +45,6 @@ mongoose
         server.listen(process.env.PORT || 6000);
     })
     .catch(err => {
-        console.log(err);
+        // console.log(err);
         console.log('not connected');
     });
